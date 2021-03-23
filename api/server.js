@@ -19,7 +19,7 @@ const authRouter = require("./auth/auth-router");
   or you can use a session store like `connect-session-knex`.
  */
 
-const server = express();
+const server = express()
 
 server.use(session({
   name: 'chocolatechip',
@@ -38,18 +38,18 @@ server.use(session({
     createtable: true,
     clearInterval: 1000 * 60 * 60,
   }),
-}));
+}))
 
-server.use(helmet());
-server.use(express.json());
-server.use(cors());
+server.use(helmet())
+server.use(express.json())
+server.use(cors())
 
-server.use("/api/auth", authRouter);
-server.use("/api/users", usersRouter);
+server.use("/api/auth", authRouter)
+server.use("/api/users", usersRouter)
 
 server.get("/", (req, res) => {
   console.log(req.session)
-  res.json({ api: "up" });
+  res.json({ api: "up" })
 });
 
 server.use((err, req, res, next) => { // eslint-disable-line
@@ -59,4 +59,4 @@ server.use((err, req, res, next) => { // eslint-disable-line
   });
 });
 
-module.exports = server;
+module.exports = server

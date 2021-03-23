@@ -1,4 +1,4 @@
-const User = require('../users/users-model');
+const User = require('../users/users-model')
 /*
   If the user does not have a session saved in the server
 
@@ -9,7 +9,11 @@ const User = require('../users/users-model');
 */
 function restricted(req, res, next) {
   console.log("RESTRICTED")
-  next()
+  if (req.session && req.session.user) {
+    next()
+  } else {
+    res.status(401).json({ message: "You shall not pass!"})
+  }
 }
 
 /*
