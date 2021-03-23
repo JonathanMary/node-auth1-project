@@ -8,7 +8,6 @@ const User = require('../users/users-model')
   }
 */
 function restricted(req, res, next) {
-  console.log("RESTRICTED")
   if (req.session && req.session.user) {
     next()
   } else {
